@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX & Tailwind CSS - Saudações</title>
+    
+    <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-900 text-white flex items-center justify-center min-h-screen font-sans">
+
+    <div class="container mx-auto p-8 bg-gray-800 rounded-lg shadow-xl max-w-2xl space-y-10">
+
+        <div class="text-center">
+            <h1 class="text-5xl font-bold text-cyan-400 mb-4">
+                <span 
+                    id="saudacao"
+                    hx-get="http://localhost:8080/api/saudacoes/aleatorio"
+                    hx-trigger="load"
+                    hx-on--after-request="let json = JSON.parse(event.detail.xhr.responseText); this.innerText = json.saudação;"
+                >Carregando saudação...</span>,
+                <span 
+                    id="nome"
+                    hx-get="http://localhost:8000/pessoas/aleatoria"
+                    hx-trigger="load"
+                    hx-on--after-request="let json = JSON.parse(event.detail.xhr.responseText); this.innerText = json.nome;"
+                >carregando nome...</span>!
+            </h1>
+            
+            <button 
+                class="mt-4 px-4 py-2 bg-gray-600 hover:bg-gray-700 rounded-lg transition-colors duration-200"
+                hx-get="http://localhost:8080/api/saudacoes/aleatorio"
+                hx-target="#saudacao"
+                hx-on--after-request="let json = JSON.parse(event.detail.xhr.responseText); htmx.find('#saudacao').innerText = json.saudação; htmx.trigger('#nome', 'load')"
+            >
+                Gerar Nova Saudação
+            </button>
+        </div>
+
+        <hr class="border-gray-700">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <form 
+                class="space-y-4"
+                hx-post="http://localhost:8000/pessoas"
+                hx-on--after-request="if(event.detail.successful) { this.reset(); alert('Pessoa cadastrada com sucesso!'); htmx.trigger('#nome', 'load'); }"
+                hx-swap="none"
+            >
+                <h2 class="text-2xl font-semibold text-emerald-400">Cadastrar Pessoa</h2>
+                <div>
+                    <label for="nome" class="block mb-2 text-sm font-medium text-gray-300">Nome da Pessoa:</label>
+                    <input 
+                        type="text" 
+                        id="nome_pessoa_input"
+                        name="nome" 
+                        class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-emerald-500 focus:border-emerald-500"
+                        required
+                    >
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-emerald-600 hover:bg-emerald-700 rounded-lg font-bold transition-colors duration-200">
+                    Enviar Pessoa
+                </button>
+            </form>
+
+            <form 
+                class="space-y-4"
+                hx-post="http://localhost:8080/api/saudacoes"
+                hx-on--after-request="if(event.detail.successful) { this.reset(); alert('Saudação cadastrada com sucesso!'); htmx.trigger('#saudacao', 'load'); }"
+                hx-swap="none"
+            >
+                <h2 class="text-2xl font-semibold text-sky-400">Cadastrar Saudação</h2>
+                <div>
+                    <label for="saudacao" class="block mb-2 text-sm font-medium text-gray-300">Texto da Saudação:</label>
+                    <input 
+                        type="text" 
+                        id="saudacao_input"
+                        name="saudação" 
+                        class="w-full p-2 bg-gray-700 border border-gray-600 rounded-md focus:ring-sky-500 focus:border-sky-500"
+                        required
+                    >
+                </div>
+                <button type="submit" class="w-full px-4 py-2 bg-sky-600 hover:bg-sky-700 rounded-lg font-bold transition-colors duration-200">
+                    Enviar Saudação
+                </button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
