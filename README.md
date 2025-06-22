@@ -1,38 +1,61 @@
-# sv
+# Gerador de Saudações
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Um projeto simples para gerar saudações, construído com SvelteKit e estilizado com Tailwind CSS.
 
-## Creating a project
+## ✨ Visão Geral
 
-If you're seeing this, you've probably already done this step. Congrats!
+Este é um aplicativo da web criado para demonstrar as funcionalidades do SvelteKit. Ele serve como um ponto de partida para quem deseja aprender e construir aplicações web modernas com Svelte.
 
-```bash
-# create a new project in the current directory
-npx sv create
+## 🚀 Tecnologias Utilizadas
 
-# create a new project in my-app
-npx sv create my-app
-```
+  * **Framework:** [SvelteKit](https://kit.svelte.dev/)
+  * **Bundler:** [Vite](https://vitejs.dev/)
+  * **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+  * **Linguagem:** [TypeScript](https://www.typescriptlang.org/)
 
-## Developing
+## 🛠️ Primeiros Passos
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Siga as instruções abaixo para ter uma cópia do projeto rodando localmente para desenvolvimento e testes.
 
-```bash
-npm run dev
+### Pré-requisitos
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+Você precisa ter o [Node.js](https://nodejs.org/) (versão 18 ou superior) e um gerenciador de pacotes como npm, pnpm ou yarn instalados.
 
-## Building
+### Instalação
 
-To create a production version of your app:
+1.  Clone o repositório:
+    ```bash
+    git clone <URL_DO_SEU_REPOSITORIO>
+    ```
+2.  Navegue até o diretório do projeto:
+    ```bash
+    cd site-gerador-saudacoes
+    ```
+3.  Instale as dependências:
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run build
-```
+## 📜 Scripts Disponíveis
 
-You can preview the production build with `npm run preview`.
+No diretório do projeto, você pode executar:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+### `npm run dev`
+
+Inicia o servidor de desenvolvimento em `http://localhost:5173`. O aplicativo será recarregado automaticamente se você fizer alterações nos arquivos.
+
+### `npm run build`
+
+Compila o aplicativo para produção na pasta `build`. Ele agrupa o Svelte no modo de produção e otimiza o build para o melhor desempenho.
+
+### `npm run preview`
+
+Inicia um servidor local para visualizar a versão de produção do seu aplicativo.
+
+### `npm run check`
+
+Executa o `svelte-check` para verificar o código Svelte e TypeScript em busca de erros e avisos.
+
+## 📝 Licença
+
+Este projeto é de código aberto. Sinta-se à vontade para usá-lo como referência.
