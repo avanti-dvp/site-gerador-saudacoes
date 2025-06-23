@@ -1,6 +1,9 @@
+A seguir, apresento um guia passo a passo detalhado para construir um `Dockerfile` otimizado para seu projeto, criar a imagem Docker e enviá-la para o Docker Hub, seguindo as melhores práticas.
+
 ### Pré-requisitos
 
-1.  **Conta no Docker Hub:** Crie uma conta gratuita no [Docker Hub](https://hub.docker.com/). Você precisará do seu nome de usuário e senha para fazer o login e enviar a imagem.
+1.  **Docker Instalado:** Você precisa ter o Docker instalado e em execução em sua máquina.
+2.  **Conta no Docker Hub:** Crie uma conta gratuita no [Docker Hub](https://hub.docker.com/). Você precisará do seu nome de usuário e senha para fazer o login e enviar a imagem.
 
 -----
 
